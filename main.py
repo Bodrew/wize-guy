@@ -13,6 +13,11 @@ client = discord.Client(intents=intents)
 legends = ["Ash","Bangalore","Bloodhound","Catalyst","Caustic","Crypto","Fuse","Gibraltar","Horizon","Lifeline","Loba","Mad Maggie","Mirage","Newcastle","Octane","Pathfinder","Rampart","Revenant","Seer","Valkyrie","Vantage","Wattson","Wraith"]
 weapons = ["Havoc Rifle","VK-47 Flatline","R-301 Carbine","Nemesis Burst AR","Alternator SMG","Prowler Burst PDW","R-99 SMG","Volt SMG","C.A.R. SMG","Devotion LMG","L-STAR EMG","M600 Spitfire","Rampage LMG","G7 Scout","Triple Take","30-30 Repeater","Charge Rifle","Longbow DMR","Sentinel","EVA-8 Auto","Mastiff Shotgun","Mozambique Shotgun","Peacekeeper","P2020","Wingman"]
 
+#generalChat
+#generalChat = client.get_channel(1418371057668325497)
+#dev-test chat
+generalChat = client.get_channel(1454568341061636316)
+
 @client.event
 async def on_ready():
     for guild in client.guilds:
@@ -32,7 +37,7 @@ async def on_message(message):
 
     if message.author == client.user:
         return
-
+    '''
     if message.content == "!treat":
         response = "MEOW, MEOW, MEOOOOOW\nhttps://www.twitch.tv/videos/1700951454"
         await message.channel.send(response)
@@ -52,6 +57,7 @@ async def on_message(message):
         await message.channel.send(response)
         weapons.append(w1)
     ### --------------------- ###
+    '''
 
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
@@ -64,5 +70,14 @@ async def on_message(message):
     if message.content == "!pic":
         response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
         await message.channel.send(response)
+
+    if message.content == "!join":
+        response = f'Welcome ${message.author}! What\'s your username so an admin can whitelist you?'
+        await message.channel.send(response)
+
+@client.event
+async def on_member_join(member):
+    await generalChat.send(f'Welcome ${member}! What\'s your username so an admin can whitelist you?')
+    pass
 
 client.run(TOKEN)
