@@ -72,12 +72,12 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content == "!join":
-        response = f'Welcome ${message.author}! What\'s your username so an admin can whitelist you?'
+        response = f'Welcome {message.author.id}! What\'s your username so an admin can whitelist you?'
         await message.channel.send(response)
 
 @client.event
 async def on_member_join(member):
-    await generalChat.send(f'Welcome ${member}! What\'s your username so an admin can whitelist you?')
+    await generalChat.send(f'Welcome {member.id}! What\'s your username so an admin can whitelist you?')
     pass
 
 client.run(TOKEN)
