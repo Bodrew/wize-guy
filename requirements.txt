@@ -1,4 +1,4 @@
-discord
-os
-random
-dotenv
+discord>=2.6.4
+os>=3
+random>=3
+dotenv>=1.2
