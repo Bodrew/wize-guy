@@ -37,27 +37,6 @@ async def on_message(message):
 
     if message.author == client.user:
         return
-    '''
-    if message.content == "!treat":
-        response = "MEOW, MEOW, MEOOOOOW\nhttps://www.twitch.tv/videos/1700951454"
-        await message.channel.send(response)
-
-    ### APEX LEGENDS COMMANDS ###
-    if message.content == "!legend":
-        legend = r.choice(legends)
-        response = f"Meow! You should play **{legend}** this round!"
-        await message.channel.send(response)
-
-    if message.content == "!loadout":
-        w1 = r.choice(weapons)
-        weapons.remove(w1)
-        w2 = r.choice(weapons)
-
-        response = f"Meow! You should use the **{w1}** and the **{w2}** this round!"
-        await message.channel.send(response)
-        weapons.append(w1)
-    ### --------------------- ###
-    '''
 
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
@@ -72,12 +51,48 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content == "!join":
-        response = f'Welcome <@{message.author.id}>! What\'s your username so an admin can whitelist you?'
+        response = f'Welcome <@{message.author.id}>! Please send your username in chat so an admin can whitelist you!'
+        await message.channel.send(response)
+
+    if message.content == "!map":
+        response = "[WizeCraft Map](http://map.wize-craft.com)"
+        await message.channel.send(response)
+    
+    if message.content == "!wiki":
+        response = "[WizeCraft Wiki](https://wize-craft.com)"
+        await message.channel.send(response)
+    
+    if message.content == "!rules":
+        response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)]"
         await message.channel.send(response)
 
 @client.event
 async def on_member_join(member):
-    await generalChat.send(f'Welcome <@{member.id}>! What\'s your username so an admin can whitelist you?')
-    pass
+    response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
+    await generalChat.send(response)
+
+### DEPRECATED COMMANDS FROM SPINACH-BOT ###
+'''
+if message.content == "!treat":
+    response = "MEOW, MEOW, MEOOOOOW\nhttps://www.twitch.tv/videos/1700951454"
+    await message.channel.send(response)
+
+### APEX LEGENDS COMMANDS ###
+if message.content == "!legend":
+    legend = r.choice(legends)
+    response = f"Meow! You should play **{legend}** this round!"
+    await message.channel.send(response)
+
+if message.content == "!loadout":
+    w1 = r.choice(weapons)
+    weapons.remove(w1)
+    w2 = r.choice(weapons)
+
+    response = f"Meow! You should use the **{w1}** and the **{w2}** this round!"
+    await message.channel.send(response)
+    weapons.append(w1)
+### --------------------- ###
+'''
+### ------------------------------------ ###
 
 client.run(TOKEN)
