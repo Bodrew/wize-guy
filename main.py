@@ -72,7 +72,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content == "!join":
-        response = f'Welcome !<{message.author.id}>! What\'s your username so an admin can whitelist you?'
+        response = f'Welcome <@{message.author.id}>! What\'s your username so an admin can whitelist you?'
         await message.channel.send(response)
 
 @client.event
