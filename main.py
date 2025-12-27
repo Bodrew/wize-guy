@@ -1,0 +1,68 @@
+import os
+import discord
+import random as r
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+GUILD = os.getenv('DISCORD_GUILD')
+
+intents=discord.Intents.all()
+client = discord.Client(intents=intents)
+
+legends = ["Ash","Bangalore","Bloodhound","Catalyst","Caustic","Crypto","Fuse","Gibraltar","Horizon","Lifeline","Loba","Mad Maggie","Mirage","Newcastle","Octane","Pathfinder","Rampart","Revenant","Seer","Valkyrie","Vantage","Wattson","Wraith"]
+weapons = ["Havoc Rifle","VK-47 Flatline","R-301 Carbine","Nemesis Burst AR","Alternator SMG","Prowler Burst PDW","R-99 SMG","Volt SMG","C.A.R. SMG","Devotion LMG","L-STAR EMG","M600 Spitfire","Rampage LMG","G7 Scout","Triple Take","30-30 Repeater","Charge Rifle","Longbow DMR","Sentinel","EVA-8 Auto","Mastiff Shotgun","Mozambique Shotgun","Peacekeeper","P2020","Wingman"]
+
+@client.event
+async def on_ready():
+    for guild in client.guilds:
+        if guild.name == GUILD:
+            break
+
+    print(
+        f'{client.user} is connected to the following guild:\n'
+        f'{guild.name}(id: {guild.id})\n'
+    )
+
+@client.event
+async def on_message(message):
+    for guild in client.guilds:
+        if guild.name == GUILD:
+            break
+
+    if message.author == client.user:
+        return
+
+    if message.content == "!treat":
+        response = "MEOW, MEOW, MEOOOOOW\nhttps://www.twitch.tv/videos/1700951454"
+        await message.channel.send(response)
+
+    ### APEX LEGENDS COMMANDS ###
+    if message.content == "!legend":
+        legend = r.choice(legends)
+        response = f"Meow! You should play **{legend}** this round!"
+        await message.channel.send(response)
+
+    if message.content == "!loadout":
+        w1 = r.choice(weapons)
+        weapons.remove(w1)
+        w2 = r.choice(weapons)
+
+        response = f"Meow! You should use the **{w1}** and the **{w2}** this round!"
+        await message.channel.send(response)
+        weapons.append(w1)
+    ### --------------------- ###
+
+    if message.content == "!admin":
+        response = "Paging <@123172448706232321>!"
+        await message.channel.send(response)
+
+    if message.content == "!users":
+        response = f"Full list of users: {[member.name for member in guild.members]}"
+        await message.channel.send(response)
+
+    if message.content == "!pic":
+        response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
+        await message.channel.send(response)
+
+client.run(TOKEN)
