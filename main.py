@@ -63,7 +63,7 @@ async def on_message(message):
         await message.channel.send(response)
     
     if message.content == "!rules":
-        response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)]"
+        response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)"
         await message.channel.send(response)
 
 @client.event
