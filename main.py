@@ -70,6 +70,11 @@ async def on_message(message):
         await message.channel.send(response)
         print("Rules message link posted.")
 
+    if message.content == "!genchat":
+        response = f"Type of `generalChat` variable is {type(generalChat)}. \n Literal: {generalChat}."
+        await message.channel.send(response)
+        print("General chat identification message sent.")
+
 @client.event
 async def on_member_join(member):
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
