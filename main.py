@@ -38,35 +38,43 @@ async def on_message(message):
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
         await message.channel.send(response)
+        print("Admin bodrew paged.")
 
     if message.content == "!users":
         response = f"Full list of users: {[member.name.replace("_", "\_") for member in guild.members]}"
         await message.channel.send(response)
+        print("User list printed.")
 
     if message.content == "!pic":
         response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
         await message.channel.send(response)
+        print("User picture attached to chat.")
 
     if message.content == "!join":
         response = f'Welcome <@{message.author.id}>! Please send your username in chat so an admin can whitelist you!'
         await message.channel.send(response)
+        print("Join message simulated.")
 
     if message.content == "!map":
         response = "[WizeCraft Map](http://map.wize-craft.com)"
         await message.channel.send(response)
+        print("Map link posted.")
     
     if message.content == "!wiki":
         response = "[WizeCraft Wiki](https://wize-craft.com)"
         await message.channel.send(response)
+        print("Wiki link posted.")
     
     if message.content == "!rules":
         response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)"
         await message.channel.send(response)
+        print("Rules message link posted.")
 
 @client.event
 async def on_member_join(member):
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
+    print("Join message posted to joiner.")
 
 ### DEPRECATED COMMANDS FROM SPINACH-BOT ###
 '''
