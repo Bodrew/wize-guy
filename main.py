@@ -41,7 +41,7 @@ async def on_message(message):
         print("Admin bodrew paged.")
 
     if message.content == "!users":
-        response = f"Full list of users: {[member.name.replace("_", "\_") for member in guild.members]}"
+        response = f"Full list of users: {[member.name.replace("_", "\\_") for member in guild.members]}"
         await message.channel.send(response)
         print("User list printed.")
 
