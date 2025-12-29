@@ -11,7 +11,7 @@ intents=discord.Intents.all()
 client = discord.Client(intents=intents)
 
 #generalChat
-generalChat = client.get_channel(1418371057668325497)
+#generalChat = client.get_channel(1418371057668325497)
 #dev-test chat
 #generalChat = client.get_channel(1454568341061636316)
 
@@ -71,12 +71,14 @@ async def on_message(message):
         print("Rules message link posted.")
 
     if message.content == "!genchat":
+        generalChat = client.get_channel(1418371057668325497)
         response = f"Type of `generalChat` variable is {type(generalChat)}. \n Literal: {generalChat}."
         await message.channel.send(response)
         print("General chat identification message sent.")
 
 @client.event
 async def on_member_join(member):
+    generalChat = client.get_channel(1418371057668325497)
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
     print("Join message posted to joiner.")
