@@ -14,9 +14,9 @@ legends = ["Ash","Bangalore","Bloodhound","Catalyst","Caustic","Crypto","Fuse","
 weapons = ["Havoc Rifle","VK-47 Flatline","R-301 Carbine","Nemesis Burst AR","Alternator SMG","Prowler Burst PDW","R-99 SMG","Volt SMG","C.A.R. SMG","Devotion LMG","L-STAR EMG","M600 Spitfire","Rampage LMG","G7 Scout","Triple Take","30-30 Repeater","Charge Rifle","Longbow DMR","Sentinel","EVA-8 Auto","Mastiff Shotgun","Mozambique Shotgun","Peacekeeper","P2020","Wingman"]
 
 #generalChat
-#generalChat = client.get_channel(1418371057668325497)
+generalChat = client.get_channel(1418371057668325497)
 #dev-test chat
-generalChat = client.get_channel(1454568341061636316)
+#generalChat = client.get_channel(1454568341061636316)
 
 @client.event
 async def on_ready():
