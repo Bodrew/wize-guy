@@ -82,12 +82,18 @@ async def on_message(message):
     ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
         wizecraftGuild = client.get_guild(1418350872164958241)
+        # Newcomer
         newcomerRole = wizecraftGuild.get_role(1418363343378579476)
+        # Administrator
+        adminRole = wizecraftGuild.get_role(1418363458533064775)
 
-        await message.author.add_roles(newcomerRole)
-        response = f"Added role {newcomerRole.name} role to {message.author.name}."
+        if adminRole in message.author.roles:
+            await message.author.add_roles(newcomerRole)
+            response = f"Added role {newcomerRole.name} role to {message.author.name}."
+        else:
+            response = "User has insufficient permissions to use `roleme`."
         await message.channel.send(response)
-        print("Roleme message sent, role added.")
+        print("Roleme message sent")
 
 @client.event
 async def on_member_join(member):
