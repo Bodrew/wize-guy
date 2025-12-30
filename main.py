@@ -76,9 +76,10 @@ async def on_message(message):
         await message.channel.send(response)
         print("General chat identification message sent.")
     
+    ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
-        await message.author.add_roles([1418363343378579476])
-        response = f"Added role {discord.Role(1418363343378579476)} to {message.author.name}."
+        await message.author.add_roles(1418363343378579476)
+        response = f"Added role newcomer role to {message.author.name}."
         await message.channel.send(response)
         print("Roleme message sent, role added.")
 
@@ -87,7 +88,7 @@ async def on_member_join(member):
     generalChat = client.get_channel(1418371057668325497)
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
-    await member.add_roles([1418363343378579476])
+    await member.add_roles(1418363343378579476)
     print("Join message posted to joiner.")
 
 ### DEPRECATED COMMANDS FROM SPINACH-BOT ###
