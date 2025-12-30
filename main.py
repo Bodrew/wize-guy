@@ -75,12 +75,19 @@ async def on_message(message):
         response = f"Type of `generalChat` variable is {type(generalChat)}. \n Literal: {generalChat}."
         await message.channel.send(response)
         print("General chat identification message sent.")
+    
+    if message.content == "!roleme":
+        message.author.add_roles([1418363343378579476])
+        response = f"Added role {discord.Role(1418363343378579476)} to {message.author.name}."
+        await message.channel.send(response)
+        print("Roleme message sent, role added.")
 
 @client.event
 async def on_member_join(member):
     generalChat = client.get_channel(1418371057668325497)
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
+    member.add_roles([1418363343378579476])
     print("Join message posted to joiner.")
 
 ### DEPRECATED COMMANDS FROM SPINACH-BOT ###
