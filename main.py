@@ -75,7 +75,10 @@ async def on_message(message):
         response = f"Type of `generalChat` variable is {type(generalChat)}. \n Literal: {generalChat}."
         await message.channel.send(response)
         print("General chat identification message sent.")
-    
+
+@client.event
+@discord.ext.commands.has_role("Administrator")
+async def on_message(message):
     ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
         wizecraftGuild = client.get_guild(1418350872164958241)
