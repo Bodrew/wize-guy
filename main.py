@@ -78,8 +78,8 @@ async def on_message(message):
     
     ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
-        guild = client.get_guild(1418350872164958241)
-        newcomerRole = guild.get_role(1418363343378579476)
+        wizecraftGuild = client.get_guild(1418350872164958241)
+        newcomerRole = wizecraftGuild.get_role(1418363343378579476)
 
         await message.author.add_roles(newcomerRole)
         response = f"Added role {newcomerRole.name} role to {message.author.name}."
@@ -88,8 +88,8 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-    guild = client.get_guild(1418350872164958241)
-    newcomerRole = guild.get_role(1418363343378579476)
+    wizecraftGuild = client.get_guild(1418350872164958241)
+    newcomerRole = wizecraftGuild.get_role(1418363343378579476)
     generalChat = client.get_channel(1418371057668325497)
 
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
