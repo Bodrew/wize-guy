@@ -77,7 +77,7 @@ async def on_message(message):
         print("General chat identification message sent.")
 
 @client.event
-@discord.ext.commands.has_role("Administrator")
+@discord.commands.has_role("Administrator")
 async def on_message(message):
     ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
