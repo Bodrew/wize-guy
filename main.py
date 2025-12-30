@@ -7,7 +7,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-intents=discord.Intents.all()
+intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
 #generalChat
@@ -78,17 +78,23 @@ async def on_message(message):
     
     ### TESTING ROLE APPLICATION ###
     if message.content == "!roleme":
-        await message.author.add_roles(1418363343378579476)
-        response = f"Added role newcomer role to {message.author.name}."
+        guild = client.get_guild(1418350872164958241)
+        newcomerRole = guild.get_role(1418350872164958241)
+
+        await message.author.add_roles(newcomerRole)
+        response = f"Added role {newcomerRole.name} role to {message.author.name}."
         await message.channel.send(response)
         print("Roleme message sent, role added.")
 
 @client.event
 async def on_member_join(member):
+    guild = client.get_guild(1418350872164958241)
+    newcomerRole = guild.get_role(1418350872164958241)
     generalChat = client.get_channel(1418371057668325497)
+
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
-    await member.add_roles(1418363343378579476)
+    await member.add_roles(newcomerRole)
     print("Join message posted to joiner.")
 
 ### DEPRECATED COMMANDS FROM SPINACH-BOT ###
