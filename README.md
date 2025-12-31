@@ -19,7 +19,7 @@ Wize Guy will post a link to the WizeCraft Bluemap website.
 Wize Guy will post a link to the WizeCraft wiki page.
 
 ### `!rules`
-Wize Guy will *specifically* post a link to the WizeCraft *Discord's* rules channel.
+Wize Guy will *specifically* post a link to the WizeCraft *Discord's* `rules` channel.
 
 ## Miscellaneous
 ### On Join Event
