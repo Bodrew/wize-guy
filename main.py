@@ -75,9 +75,11 @@ async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
     players_online = status.players.online
-    channel_name = f"{players_online}-online"
+    emoji = "🟢" if int(players_online) >= 1 else "🔴"
 
-    statusChannel = client.get_channel(1456491994388893830)
+    channel_name = f"{emoji} {players_online} online"
+
+    statusChannel = client.get_channel(1456727821815906454)
     await statusChannel.edit(name=channel_name)
 
 schedule.every(5).minutes.do(update_status)
