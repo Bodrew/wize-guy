@@ -25,7 +25,6 @@ async def on_ready():
     )
 
     update_status.start()
-    update_dev_chat.start()
 
 @client.event
 async def on_message(message):
@@ -85,11 +84,5 @@ async def update_status():
 
     statusChannel = client.get_channel(1456727821815906454)
     await statusChannel.edit(name=channel_name)
-
-@tasks.loop(seconds=5.0)
-async def update_dev_chat():
-    devChannel = client.get_channel(1454568341061636316)
-    response = "5 seconds have passed, sending this message with Python library `schedule`."
-    await devChannel.send(response)
 
 client.run(TOKEN)
