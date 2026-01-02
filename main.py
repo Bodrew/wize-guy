@@ -81,9 +81,7 @@ def update_status():
 
     wizecraftGuild = client.get_guild(1418350872164958241)
     statusChannel = client.get_channel(1456491994388893830)
-    statusChannel.name = channel_name
-
-    return channel_name
+    statusChannel.edit(name=channel_name)
 
 schedule.every(5).minutes.do(update_status)
 
