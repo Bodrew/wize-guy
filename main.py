@@ -58,9 +58,7 @@ async def on_message(message):
         print("Rules message link posted.")
 
     if message.content == "!fetch":
-        update_status()
-
-
+        await update_status()
 
 @client.event
 async def on_member_join(member):
