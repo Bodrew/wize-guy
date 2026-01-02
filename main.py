@@ -3,7 +3,6 @@ import discord
 import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
-import schedule
 import time
 
 load_dotenv()
