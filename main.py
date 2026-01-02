@@ -58,7 +58,7 @@ async def on_message(message):
         print("Rules message link posted.")
 
     if message.content == "!fetch":
-        await update_status()
+        update_status()
 
 @client.event
 async def on_member_join(member):
@@ -71,15 +71,14 @@ async def on_member_join(member):
     await member.add_roles(newcomerRole)
     print("Join message posted to joiner.")
 
-def update_status():
+async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
     players_online = status.players.online
     channel_name = f"{players_online}-online"
 
-    wizecraftGuild = client.get_guild(1418350872164958241)
     statusChannel = client.get_channel(1456491994388893830)
-    statusChannel.edit(name=channel_name)
+    await statusChannel.edit(name=channel_name)
 
 schedule.every(5).minutes.do(update_status)
 
