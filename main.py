@@ -2,6 +2,9 @@ import os
 import discord
 import random as r
 from dotenv import load_dotenv
+from mcstatus import JavaServer
+import schedule
+import time
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -65,4 +68,20 @@ async def on_member_join(member):
     await member.add_roles(newcomerRole)
     print("Join message posted to joiner.")
 
+def update_status():
+    server = JavaServer.lookup("play.wize-craft.com")
+    status = server.status()
+    players_online = status.players.online
+    channel_name = f"{players_online}-online"
+
+    wizecraftGuild = client.get_guild(1418350872164958241)
+    statusChannel = client.get_channel(1456491994388893830)
+    statusChannel.name = channel_name
+
+schedule.every(5).minutes.do(update_status)
+
 client.run(TOKEN)
+
+while True:
+    schedule.run_pending()
+    time.sleep(5)
