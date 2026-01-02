@@ -1,5 +1,6 @@
 import os
 import discord
+from discord.ext import tasks
 import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
@@ -70,7 +71,7 @@ async def on_member_join(member):
     await member.add_roles(newcomerRole)
     print("Join message posted to joiner.")
 
-@discord.ext.tasks.loop(minutes=1.0)
+@tasks.loop(minutes=1.0)
 async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
@@ -82,7 +83,7 @@ async def update_status():
     statusChannel = client.get_channel(1456727821815906454)
     await statusChannel.edit(name=channel_name)
 
-@discord.ext.tasks.loop(seconds=5.0)
+@tasks.loop(seconds=5.0)
 async def update_dev_chat():
     devChannel = client.get_channel(1454568341061636316)
     response = "5 seconds have passed, sending this message with Python library `schedule`."
