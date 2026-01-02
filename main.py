@@ -57,6 +57,11 @@ async def on_message(message):
         await message.channel.send(response)
         print("Rules message link posted.")
 
+    if message.content == "!fetch":
+        update_status()
+
+
+
 @client.event
 async def on_member_join(member):
     wizecraftGuild = client.get_guild(1418350872164958241)
@@ -77,6 +82,8 @@ def update_status():
     wizecraftGuild = client.get_guild(1418350872164958241)
     statusChannel = client.get_channel(1456491994388893830)
     statusChannel.name = channel_name
+
+    return channel_name
 
 schedule.every(5).minutes.do(update_status)
 
