@@ -82,10 +82,16 @@ async def update_status():
     statusChannel = client.get_channel(1456727821815906454)
     await statusChannel.edit(name=channel_name)
 
+async def update_dev_chat():
+    devChannel = client.get_channel(1454568341061636316)
+    response = "5 seconds have passed, sending this message with Python library `schedule`."
+    await devChannel.send(response)
+
 schedule.every(5).minutes.do(update_status)
+schedule.every(5).seconds.do(update_dev_chat)
 
 client.run(TOKEN)
 
 while True:
     schedule.run_pending()
-    time.sleep(5)
+    time.sleep(1)
