@@ -24,6 +24,9 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})\n'
     )
 
+    update_status.start()
+    update_dev_chat.start()
+
 @client.event
 async def on_message(message):
     for guild in client.guilds:
