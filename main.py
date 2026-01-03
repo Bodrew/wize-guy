@@ -73,7 +73,7 @@ async def on_member_join(member):
     await member.add_roles(newcomerRole)
     print("Join message posted to joiner.")
 
-@tasks.loop(minutes=1.0)
+@tasks.loop(minutes=2.0)
 async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
@@ -83,6 +83,11 @@ async def update_status():
     channel_name = f"{emoji} {players_online} online"
 
     statusChannel = client.get_channel(1456727821815906454)
-    await statusChannel.edit(name=channel_name)
+    displayedPlyrsOnline = statusChannel.name.rsplit(" ")[1]
+
+    if int(displayedPlyrsOnline) != players_online:
+        await statusChannel.edit(name=channel_name)
+    else:
+        print("The number of players online has not changed. Not updating channel status.")
 
 client.run(TOKEN)
