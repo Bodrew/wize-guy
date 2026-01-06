@@ -16,7 +16,7 @@ def print_time():
             i = "0" + str(i)
         else:
             i = str(i)
-        st_array.pop(i)
+        st_array.append(i)
         
     response = "[" + st_array[0] + "-" + st_array[1] + "-" + st_array[2] + " " + st_array[3] + ":" + st_array[4] + ":" + st_array[5] + "]"
     return response
