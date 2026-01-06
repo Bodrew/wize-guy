@@ -8,7 +8,7 @@ import time
 
 def print_time():
     t = time.localtime()
-    response = "[" + t.tm_year + "-" + t.tm_mon + "-" + t.tm_mday + " " + t.tm_hour + ":" + t.tm_min + ":" + t.tm_sec + "]"
+    response = "[" + str(t.tm_year) + "-" + str(t.tm_mon) + "-" + str(t.tm_mday) + " " + str(t.tm_hour) + ":" + str(t.tm_min) + ":" + str(t.tm_sec) + "]"
     return response
 
 load_dotenv()
