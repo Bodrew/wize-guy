@@ -19,14 +19,17 @@ async def on_ready():
         if guild.name == GUILD:
             break
 
+    # Show login message
     print(
         f'{client.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})\n'
     )
 
+    # Start recurring tasks 
     update_status.start()
 
 @client.event
+# On message events
 async def on_message(message):
     for guild in client.guilds:
         if guild.name == GUILD:
@@ -37,27 +40,27 @@ async def on_message(message):
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
         await message.channel.send(response)
-        print("Admin bodrew paged.")
+        print(time.localtime() + "\n" + "Admin bodrew paged.")
     
     if message.content == "!pic":
         response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
         await message.channel.send(response)
-        print("User picture attached to chat.")
+        print(time.localtime() + "\n" + "User picture attached to chat.")
 
     if message.content == "!map":
         response = "[WizeCraft Map](http://map.wize-craft.com)"
         await message.channel.send(response)
-        print("Map link posted.")
+        print(time.localtime() + "\n" + "Map link posted.")
     
     if message.content == "!wiki":
         response = "[WizeCraft Wiki](https://wize-craft.com)"
         await message.channel.send(response)
-        print("Wiki link posted.")
+        print(time.localtime() + "\n" + "Wiki link posted.")
     
     if message.content == "!rules":
         response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)"
         await message.channel.send(response)
-        print("Rules message link posted.")
+        print(time.localtime() + "\n" + "Rules message link posted.")
 
     if message.content == "!fetch":
         await update_status()
@@ -71,7 +74,7 @@ async def on_member_join(member):
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
     await member.add_roles(newcomerRole)
-    print("Join message posted to joiner.")
+    print(time.localtime() + "\n" + "Join message posted to joiner.")
 
 @tasks.loop(minutes=2.0)
 async def update_status():
@@ -88,6 +91,6 @@ async def update_status():
     if int(displayedPlyrsOnline) != players_online:
         await statusChannel.edit(name=channel_name)
     else:
-        print("The number of players online has not changed. Not updating channel status.")
+        print(time.localtime() + "\n" + "The number of players online has not changed. Not updating channel status.")
 
 client.run(TOKEN)
