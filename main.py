@@ -6,6 +6,11 @@ from dotenv import load_dotenv
 from mcstatus import JavaServer
 import time
 
+def print_time():
+    t = time.localtime()
+    response = "[" + t.tm_year + "-" + t.tm_mon + "-" + t.tm_mday + " " + t.tm_hour + ":" + t.tm_min + ":" + t.tm_sec + "]"
+    return response
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -40,27 +45,27 @@ async def on_message(message):
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
         await message.channel.send(response)
-        print(time.localtime() + "\n" + "Admin bodrew paged.")
+        print(print_time() + "\n" + "Admin bodrew paged.")
     
     if message.content == "!pic":
         response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
         await message.channel.send(response)
-        print(time.localtime() + "\n" + "User picture attached to chat.")
+        print(print_time() + "\n" + "User picture attached to chat.")
 
     if message.content == "!map":
         response = "[WizeCraft Map](http://map.wize-craft.com)"
         await message.channel.send(response)
-        print(time.localtime() + "\n" + "Map link posted.")
+        print(print_time() + "\n" + "Map link posted.")
     
     if message.content == "!wiki":
         response = "[WizeCraft Wiki](https://wize-craft.com)"
         await message.channel.send(response)
-        print(time.localtime() + "\n" + "Wiki link posted.")
+        print(print_time() + "\n" + "Wiki link posted.")
     
     if message.content == "!rules":
         response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)"
         await message.channel.send(response)
-        print(time.localtime() + "\n" + "Rules message link posted.")
+        print(print_time() + "\n" + "Rules message link posted.")
 
     if message.content == "!fetch":
         await update_status()
@@ -74,7 +79,7 @@ async def on_member_join(member):
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
     await member.add_roles(newcomerRole)
-    print(time.localtime() + "\n" + "Join message posted to joiner.")
+    print(print_time() + "\n" + "Join message posted to joiner.")
 
 @tasks.loop(minutes=2.0)
 async def update_status():
@@ -91,6 +96,6 @@ async def update_status():
     if int(displayedPlyrsOnline) != players_online:
         await statusChannel.edit(name=channel_name)
     else:
-        print(time.localtime() + "\n" + "The number of players online has not changed. Not updating channel status.")
+        print(print_time() + "\n" + "The number of players online has not changed. Not updating channel status.")
 
 client.run(TOKEN)
