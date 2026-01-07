@@ -58,27 +58,24 @@ async def on_message(message):
         print(print_time() + "\n" + "Admin bodrew paged.")
     
     if message.content == "!pic":
-        response = f"{message.author.name}\'s Profile Pic: {message.author.display_avatar}"
+        response = f"{message.author.name}\'s [Profile Pic]({message.author.display_avatar})"
         await message.channel.send(response)
         print(print_time() + "\n" + "User picture attached to chat.")
 
     if message.content == "!map":
-        response = "[WizeCraft Map](http://map.wize-craft.com)"
+        response = "WizeCraft Map: http://map.wize-craft.com"
         await message.channel.send(response)
         print(print_time() + "\n" + "Map link posted.")
     
     if message.content == "!wiki":
-        response = "[WizeCraft Wiki](https://wize-craft.com)"
+        response = "WizeCraft Wiki: https://wize-craft.com"
         await message.channel.send(response)
         print(print_time() + "\n" + "Wiki link posted.")
     
     if message.content == "!rules":
-        response = "[WizeCraft Rules](https://discordapp.com/channels/1418350872164958241/1418363014490619905)"
+        response = "WizeCraft Rules: https://discordapp.com/channels/1418350872164958241/1418363014490619905"
         await message.channel.send(response)
         print(print_time() + "\n" + "Rules message link posted.")
-
-    if message.content == "!fetch":
-        await update_status()
 
 @client.event
 async def on_member_join(member):
