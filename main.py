@@ -77,15 +77,15 @@ async def on_message(message):
         await message.channel.send(response)
         print(print_time() + "\n" + "Rules message link posted.")
 
-    if message.author.name == "bodrew" and "minecraft server" in message.content and "Day" in message.content and "suggesting" in message.content:
+    if "minecraft server".lower() in message.content and "day" in message.content.lower() and "suggesting" in message.content.lower():
         if "coffee" in message.content:
             emoji = "\u2615"
             await message.add_reaction(emoji)
-            print(print_time() + "\n" + "Coffee reaction applied to saltedcoffwee's message")
+            print(print_time() + "\n" + f"Coffee reaction applied to {message.author.name}'s message")
         elif "tea" in message.content:
             emoji = "\U0001F375"
             await message.add_reaction(emoji)
-            print(print_time() + "\n" + "Tea reaction applied to saltedcoffwee's message")
+            print(print_time() + "\n" + f"Tea reaction applied to {message.author.name}'s message")
 
 @client.event
 async def on_member_join(member):
