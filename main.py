@@ -79,11 +79,11 @@ async def on_message(message):
 
     if message.author.name == "bodrew" and "minecraft server" in message.content and "Day" in message.content and "suggesting" in message.content:
         if "coffee" in message.content:
-            emoji = "☕️"
+            emoji = "U+E045"
             await message.add_reaction(emoji)
             print(print_time() + "\n" + "Coffee reaction applied to saltedcoffwee's message")
         elif "tea" in message.content:
-            emoji = "🍵"
+            emoji = "U+E338"
             await message.add_reaction(emoji)
             print(print_time() + "\n" + "Tea reaction applied to saltedcoffwee's message")
 
