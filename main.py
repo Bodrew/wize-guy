@@ -77,6 +77,14 @@ async def on_message(message):
         await message.channel.send(response)
         print(print_time() + "\n" + "Rules message link posted.")
 
+    if message.author.name == "Bodrew" & "minecraft server" in message.content & "Day" in message.content:
+        if "coffee" in message.content:
+            await message.add_reaction(discord.emoji(1))
+            print(print_time() + "\n" + "Coffee reaction applied to saltedcoffwee's message")
+        if "tea" in message.content:
+            await message.add_reaction(discord.emoji(2))
+            print(print_time() + "\n" + "Tea reaction applied to saltedcoffwee's message")
+
 @client.event
 async def on_member_join(member):
     wizecraftGuild = client.get_guild(1418350872164958241)
