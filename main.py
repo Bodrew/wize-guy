@@ -81,9 +81,11 @@ async def on_message(message):
         if "coffee" in message.content:
             await message.add_reaction(discord.emoji(1))
             print(print_time() + "\n" + "Coffee reaction applied to saltedcoffwee's message")
-        if "tea" in message.content:
+        elif "tea" in message.content:
             await message.add_reaction(discord.emoji(2))
             print(print_time() + "\n" + "Tea reaction applied to saltedcoffwee's message")
+    
+    print("Message author name: " + message.author.name)
 
 @client.event
 async def on_member_join(member):
