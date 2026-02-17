@@ -43,8 +43,8 @@ async def on_ready():
     # Start recurring tasks 
     update_status.start()
 
-@client.event
 # On message events
+@client.event
 async def on_message(message):
     for guild in client.guilds:
         if guild.name == GUILD:
@@ -60,9 +60,9 @@ async def on_message(message):
     if message.content == "!pic":
         response = f"{message.author.name}\'s [Profile Pic]({message.author.display_avatar})"
         await message.channel.send(response)
-        print(print_time() + "\n" + "User picture attached to chat.")
+        print(print_time() + "\n" + f"{message.author.name}\'s picture attached to chat.")
 
-    if message.content == "!map":
+    if "!map" in message.content:
         response = "WizeCraft Map: http://map.wize-craft.com"
         await message.channel.send(response)
         print(print_time() + "\n" + "Map link posted.")
@@ -77,7 +77,7 @@ async def on_message(message):
         await message.channel.send(response)
         print(print_time() + "\n" + "Rules message link posted.")
 
-    if "minecraft server".lower() in message.content and "day" in message.content.lower() and "suggesting" in message.content.lower():
+    if "minecraft server" in message.content.lower() and "day" in message.content.lower() and "suggesting" in message.content.lower():
         if "coffee" in message.content:
             emoji = "\u2615"
             await message.add_reaction(emoji)
@@ -96,7 +96,7 @@ async def on_member_join(member):
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
     await member.add_roles(newcomerRole)
-    print(print_time() + "\n" + "Join message posted to joiner.")
+    print(print_time() + "\n" + f"Join message posted to {member.name}.")
 
 @tasks.loop(minutes=2.0)
 async def update_status():
