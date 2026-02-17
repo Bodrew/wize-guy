@@ -57,7 +57,7 @@ async def on_message(message):
         await message.channel.send(response)
         print(print_time() + "\n" + "Admin bodrew paged.")
     
-    if message.content == "!pic":
+    if "!pic" in message.content:
         response = f"{message.author.name}\'s [Profile Pic]({message.author.display_avatar})"
         await message.channel.send(response)
         print(print_time() + "\n" + f"{message.author.name}\'s picture attached to chat.")
@@ -67,12 +67,12 @@ async def on_message(message):
         await message.channel.send(response)
         print(print_time() + "\n" + "Map link posted.")
     
-    if message.content == "!wiki":
+    if "!wiki" in message.content:
         response = "WizeCraft Wiki: https://wize-craft.com"
         await message.channel.send(response)
         print(print_time() + "\n" + "Wiki link posted.")
     
-    if message.content == "!rules":
+    if "!rules" in message.content:
         response = "WizeCraft Rules: https://discordapp.com/channels/1418350872164958241/1418363014490619905"
         await message.channel.send(response)
         print(print_time() + "\n" + "Rules message link posted.")
