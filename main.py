@@ -63,7 +63,7 @@ async def on_message(message):
         print(print_time() + "\n" + f"{message.author.name}\'s picture attached to chat.")
 
     if "!map" in message.content:
-        response = "WizeCraft Map: http://map.wize-craft.com"
+        response = "WizeCraft Map: https://map.wize-craft.com"
         await message.channel.send(response)
         print(print_time() + "\n" + "Map link posted.")
     
