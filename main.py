@@ -29,7 +29,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
-MinecraftModule
+#MinecraftModule
 
 @client.event
 async def on_ready():
