@@ -5,7 +5,7 @@ import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
 import time
-import ampapi
+#import ampapi
 
 def print_time():
     t = time.localtime()
@@ -28,6 +28,8 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+
+MinecraftModule
 
 @client.event
 async def on_ready():
@@ -103,7 +105,6 @@ async def on_member_join(member):
 async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
-    print(status)
     players_online = status.players.online
     emoji = "🟢" if int(players_online) >= 1 else "🟡"
 
