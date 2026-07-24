@@ -5,7 +5,7 @@ import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
 import time
-#import ampapi
+import ampapi
 
 def print_time():
     t = time.localtime()
