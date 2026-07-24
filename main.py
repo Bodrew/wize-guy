@@ -49,9 +49,6 @@ AMP_PW = os.getenv('AMP_PW')
 
 _params = APIParams(AMP_URL, AMP_USER, AMP_PW)
 
-async def on_ready() -> None:
-
-
 @client.event
 async def on_ready():
     # Discord Bot login
