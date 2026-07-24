@@ -48,13 +48,15 @@ AMP_USER = os.getenv('AMP_USER')
 AMP_PW = os.getenv('AMP_PW')
 
 _params = APIParams(AMP_URL, AMP_USER, AMP_PW)
-_bridge = Bridge(_params)
-session: aiohttp.ClientSession = aiohttp.ClientSession()
-ADS: AMPInstance = AMPInstance(session=session)
-ADS.format_data = False
-print(ADS)
 
-#MinecraftModule
+async def Sample_API() -> None:
+    _bridge = Bridge(_params)
+    session: aiohttp.ClientSession = aiohttp.ClientSession()
+    ADS: AMPInstance = AMPInstance(session=session)
+    ADS.format_data = False
+    print(ADS)
+
+    #MinecraftModule
 
 @client.event
 async def on_ready():
