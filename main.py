@@ -4,6 +4,7 @@ from discord.ext import tasks
 import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
+from typing import Union
 import time
 import logging
 import aiohttp
@@ -75,9 +76,10 @@ async def on_ready():
     AMPInstances= list(ADS.instances)
     mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
     for instance in AMPInstances:
-        if instance.friendly_name == "Minecraft":
-            mcinstance: AMPInstance = instance
-            break
+        if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
+            if instance.friendly_name == "Minecraft":
+                mcinstance: AMPInstance = instance
+                break
     mcinstance.mc_add_to_whitelist("ghilliesuit1")
 
 def whitelist(user):
