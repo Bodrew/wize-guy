@@ -72,7 +72,7 @@ async def on_ready():
     ADS.format_data = False
     await ADS.get_instances(format_data=True)
 
-    AMPInstances: list[AMPInstance] = list(ADS.instances)
+    AMPInstances= list(ADS.instances)
     mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
     for instance in AMPInstances:
         if instance.friendly_name == "Minecraft":
