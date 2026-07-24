@@ -50,16 +50,11 @@ AMP_PW = os.getenv('AMP_PW')
 _params = APIParams(AMP_URL, AMP_USER, AMP_PW)
 
 async def on_ready() -> None:
-    _bridge = Bridge(_params)
-    session: aiohttp.ClientSession = aiohttp.ClientSession()
-    ADS: AMPInstance = AMPInstance(session=session)
-    ADS.format_data = False
-    print(ADS)
 
-    #MinecraftModule
 
 @client.event
 async def on_ready():
+    # Discord Bot login
     for guild in client.guilds:
         if guild.name == GUILD:
             break
@@ -72,6 +67,15 @@ async def on_ready():
 
     # Start recurring tasks 
     update_status.start()
+
+    # AMP API initialization
+    _bridge = Bridge(_params)
+    session: aiohttp.ClientSession = aiohttp.ClientSession()
+    ADS: AMPInstance = AMPInstance(session=session)
+    ADS.format_data = False
+    print(ADS)
+
+    #MinecraftModule
 
 # On message events
 @client.event
