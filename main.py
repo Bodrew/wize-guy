@@ -49,7 +49,7 @@ AMP_PW = os.getenv('AMP_PW')
 
 _params = APIParams(AMP_URL, AMP_USER, AMP_PW)
 
-async def Sample_API() -> None:
+async def on_ready() -> None:
     _bridge = Bridge(_params)
     session: aiohttp.ClientSession = aiohttp.ClientSession()
     ADS: AMPInstance = AMPInstance(session=session)
