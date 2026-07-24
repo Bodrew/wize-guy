@@ -70,9 +70,18 @@ async def on_ready():
     session: aiohttp.ClientSession = aiohttp.ClientSession()
     ADS: AMPInstance = AMPInstance(session=session)
     ADS.format_data = False
-    print(ADS)
+    await ADS.get_instances(format_data=True)
 
-    #MinecraftModule
+    AMPInstances: list[AMPInstance] = list(ADS.instances)
+    for instance in AMPInstances:
+        if instance.friendly_name == "Minecraft":
+            mcinstance: AMPInstance = instance
+            break
+    mcinstance.mc_add_to_whitelist("ghilliesuit1")
+
+def whitelist(user):
+    pass
+
 
 # On message events
 @client.event
@@ -117,6 +126,10 @@ async def on_message(message):
             emoji = "\U0001F375"
             await message.add_reaction(emoji)
             print(print_time() + "\n" + f"Tea reaction applied to {message.author.name}'s message")
+    
+    if "!whitelist " in message.content:
+        user = message.content.split(" ")[1]
+        whitelist(user)
 
 @client.event
 async def on_member_join(member):
