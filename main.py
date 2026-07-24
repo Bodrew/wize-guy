@@ -5,7 +5,21 @@ import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
 import time
-import ampapi
+import logging
+import aiohttp
+from ampapi import (
+    ActionResultError,
+    AMPADSInstance,
+    AMPControllerInstance,
+    AMPInstance,
+    AMPInstanceState,
+    AMPMinecraftInstance,
+    AnalyticsFilter,
+    AnalyticsSummary,
+    APIParams,
+    Bridge,
+    Players,
+)
 
 def print_time():
     t = time.localtime()
@@ -28,6 +42,17 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+
+AMP_URL = os.getenv('AMP_URL')
+AMP_USER = os.getenv('AMP_USER')
+AMP_PW = os.getenv('AMP_PW')
+
+_params = APIParams(AMP_URL, AMP_USER, AMP_PW)
+_bridge = Bridge(_params)
+session: aiohttp.ClientSession = aiohttp.ClientSession()
+ADS: AMPInstance = AMPInstance(session=session)
+ADS.format_data = False
+print(ADS)
 
 #MinecraftModule
 
