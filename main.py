@@ -67,7 +67,7 @@ async def on_ready():
     update_status.start()
 
     # AMP API initialization
-    _bridge = Bridge(api_params=_params)
+    '''_bridge = Bridge(api_params=_params)
     session: aiohttp.ClientSession = aiohttp.ClientSession()
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     ADS.format_data = False
@@ -84,7 +84,7 @@ async def on_ready():
 
 def whitelist(user):
     pass
-
+'''
 
 # On message events
 @client.event
@@ -132,7 +132,7 @@ async def on_message(message):
     
     if "!whitelist " in message.content:
         user = message.content.split(" ")[1]
-        whitelist(user)
+        #whitelist(user)
 
 @client.event
 async def on_member_join(member):
