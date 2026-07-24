@@ -66,13 +66,14 @@ async def on_ready():
     update_status.start()
 
     # AMP API initialization
-    _bridge = Bridge(_params)
+    _bridge = Bridge(api_params=_params)
     session: aiohttp.ClientSession = aiohttp.ClientSession()
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     ADS.format_data = False
     await ADS.get_instances(format_data=True)
 
     AMPInstances: list[AMPInstance] = list(ADS.instances)
+    mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
     for instance in AMPInstances:
         if instance.friendly_name == "Minecraft":
             mcinstance: AMPInstance = instance
