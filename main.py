@@ -68,7 +68,7 @@ async def on_ready():
     # AMP API initialization
     _bridge = Bridge(_params)
     session: aiohttp.ClientSession = aiohttp.ClientSession()
-    ADS: AMPInstance = AMPInstance(session=session)
+    ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     ADS.format_data = False
     await ADS.get_instances(format_data=True)
 
