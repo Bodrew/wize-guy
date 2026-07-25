@@ -68,7 +68,7 @@ async def on_ready():
 
     # Create the whitelist application command.
 
-@client.tree.command(name="echo", description="Repeat your message bacl")
+@discord.app_commands.tree.command(name="echo", description="Repeat your message bacl")
 async def echo(interaction: discord.Interaction, message: str) -> None:
     await interaction.response.send_message(message)
 
