@@ -66,44 +66,6 @@ async def on_ready():
     # Start recurring tasks 
     update_status.start()
 
-    # AMP API initialization
-    _bridge = Bridge(api_params=_params)
-    
-    print("Get session...")
-    session = aiohttp.ClientSession()
-    print("Set AMPControllerInstance with existing session...")
-    ADS = AMPControllerInstance(session=session)
-    print("Await ADS get instances...")
-    await ADS.get_instances(format_data=False)
-
-    for instance in ADS.instances:
-        print(instance)
-
-    print("Convert AMPInstances to list...")
-    AMPInstances = list(ADS.instances)
-    print("Set mcinstance to Union of none...")
-    mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
-    print("Iterate through instances to find the Minecraft instance...")
-    for instance in AMPInstances:
-        instance.auto_assign_tags = True
-        print(f"Is {instance.friendly_name} an instance?")
-        if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
-            print("Yes...")
-            print(f"Is {instance.friendly_name} named Minecraft?")
-            if instance.friendly_name == "Minecraft":
-                print("Yes!")
-                mcinstance: AMPInstance = instance
-                break
-            else:
-                print("No...")
-        else:
-            print("No...")
-    
-    mcinstance.mc_add_to_whitelist("ghilliesuit1")
-
-def whitelist(user):
-    pass
-
 # On message events
 @client.event
 async def on_message(message):
