@@ -73,10 +73,8 @@ async def on_ready():
     print("Set AMPControllerInstance with existing session...")
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     print("Set ADS tags...")
-    ADS.format_data = False
-    ADS.auto_assign_tags = True
     print("Await ADS get instances...")
-    await ADS.get_instances(format_data=True)
+    await ADS.get_instances(format_data=True, auto_assign_tags=True)
 
     print("Convert AMPInstances to list...")
     AMPInstances = list(ADS.instances)
