@@ -67,11 +67,11 @@ async def on_ready():
     update_status.start()
 
     # Create the whitelist application command.
-
+'''
 @discord.app_commands.Command(name="echo", description="Repeat your message back", callback="test")
 async def echo(interaction: discord.Interaction, message: str) -> None:
     await interaction.response.send_message(message)
-
+'''
 
 # On message events
 @client.event
