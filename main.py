@@ -66,6 +66,13 @@ async def on_ready():
     # Start recurring tasks 
     update_status.start()
 
+    # Create the whitelist application command.
+
+@client.tree.command(name="echo", description="Repeat your message bacl")
+async def echo(interaction: discord.Interaction, message: str) -> None:
+    await interaction.response.send_message(message)
+
+
 # On message events
 @client.event
 async def on_message(message):
@@ -118,11 +125,13 @@ async def on_message(message):
 async def on_member_join(member):
     wizecraftGuild = client.get_guild(1418350872164958241)
     newcomerRole = wizecraftGuild.get_role(1418363343378579476)
+    notWhitelistedRole = wizecraftGuild.get_role(1530689863555350779)
     generalChat = client.get_channel(1418371057668325497)
 
+    await member.add_roles(newcomerRole)
+    await member.add_roles(notWhitelistedRole)
     response = f'Welcome <@{member.id}>! Please send your username in chat so an admin can whitelist you!'
     await generalChat.send(response)
-    await member.add_roles(newcomerRole)
     print(print_time() + "\n" + f"Join message posted to {member.name}.")
 
 @tasks.loop(minutes=2.0)
