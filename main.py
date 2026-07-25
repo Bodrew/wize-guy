@@ -76,7 +76,7 @@ async def on_ready():
     ADS.format_data = False
     ADS.auto_assign_tags = True
     print("Await ADS get instances...")
-    await ADS.get_instances(format_data=True)
+    await ADS.get_instances(format_data=False)
 
     print("Convert AMPInstances to list...")
     AMPInstances= list(ADS.instances)
