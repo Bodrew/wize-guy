@@ -22,14 +22,6 @@ from ampapi import (
     Players,
 )
 
-class PatchedMeta:
-    auto_assign_tags = True
-
-AMPInstance.Meta = PatchedMeta
-AMPControllerInstance.Meta = PatchedMeta
-AMPADSInstance.Meta = PatchedMeta
-AMPMinecraftInstance.Meta = PatchedMeta
-
 def print_time():
     t = time.localtime()
     t_array = [t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec]
@@ -86,13 +78,24 @@ async def on_ready():
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=True)
 
+    print("Convert AMPInstances to list...")
     AMPInstances= list(ADS.instances)
+    print("Set mcinstance to Union of none...")
     mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
+    print("Iterate through instances to find the Minecraft instance...")
     for instance in AMPInstances:
+        print(f"Is {instance.friendly_name} an instance?")
         if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
+            print("Yes...")
+            print(f"Is {instance.friendly_name} named Minecraft?")
             if instance.friendly_name == "Minecraft":
+                print("Yes!")
                 mcinstance: AMPInstance = instance
                 break
+            else:
+                print("No...")
+        else:
+            print("No...")
     
     mcinstance.mc_add_to_whitelist("ghilliesuit1")
 
