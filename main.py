@@ -21,6 +21,10 @@ from ampapi import (
     Bridge,
     Players,
 )
+from dataclass_wizard import meta
+
+# Set global default behavior
+meta.JSONMeta.auto_assign_tags = True
 
 def print_time():
     t = time.localtime()
