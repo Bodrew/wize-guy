@@ -21,12 +21,6 @@ from ampapi import (
     Bridge,
     Players,
 )
-from dataclass_wizard import JSONMeta
-
-# Set the global default for dataclass-wizard
-# The correct way to set it for all dataclasses
-if hasattr(JSONMeta, 'auto_assign_tags'):
-    JSONMeta.auto_assign_tags = True
 
 def print_time():
     t = time.localtime()
