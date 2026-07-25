@@ -69,21 +69,21 @@ async def on_ready():
     # AMP API initialization
     _bridge = Bridge(api_params=_params)
     print("Get session...")
-    session: aiohttp.ClientSession = aiohttp.ClientSession()
+    session: aiohttp.ClientSession = aiohttp.ClientSession(_bridge)
     print("Set AMPControllerInstance with existing session...")
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     print("Set ADS tags...")
     ADS.format_data = False
     ADS.auto_assign_tags = True
     print("Await ADS get instances...")
-    await ADS.get_instances(format_data=False)
+    await ADS.get_instances(format_data=True)
 
-    #print("Convert AMPInstances to list...")
-    #AMPInstances= list(ADS.instances)
-    print("Set mcinstance to none...")
-    mcinstance = None
+    print("Convert AMPInstances to list...")
+    AMPInstances= list(ADS.instances)
+    print("Set mcinstance to Union of none...")
+    mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
     print("Iterate through instances to find the Minecraft instance...")
-    for instance in ADS.instances:
+    for instance in AMPInstances:
         print(f"Is {instance.friendly_name} an instance?")
         if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
             print("Yes...")
