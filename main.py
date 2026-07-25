@@ -78,12 +78,12 @@ async def on_ready():
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=False)
 
-    print("Convert AMPInstances to list...")
-    AMPInstances= list(ADS.instances)
-    print("Set mcinstance to Union of none...")
-    mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
+    #print("Convert AMPInstances to list...")
+    #AMPInstances= list(ADS.instances)
+    print("Set mcinstance to none...")
+    mcinstance = None
     print("Iterate through instances to find the Minecraft instance...")
-    for instance in AMPInstances:
+    for instance in ADS.instances:
         print(f"Is {instance.friendly_name} an instance?")
         if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
             print("Yes...")
