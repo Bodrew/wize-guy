@@ -71,6 +71,7 @@ async def on_ready():
     session: aiohttp.ClientSession = aiohttp.ClientSession()
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     ADS.format_data = False
+    ADS.auto_assign_tags = True
     await ADS.get_instances(format_data=True)
 
     AMPInstances= list(ADS.instances)
@@ -80,6 +81,7 @@ async def on_ready():
             if instance.friendly_name == "Minecraft":
                 mcinstance: AMPInstance = instance
                 break
+    
     mcinstance.mc_add_to_whitelist("ghilliesuit1")
 
 def whitelist(user):
