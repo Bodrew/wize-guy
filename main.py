@@ -22,6 +22,14 @@ from ampapi import (
     Players,
 )
 
+class PatchedMeta:
+    auto_assign_tags = True
+
+AMPInstance.Meta = PatchedMeta
+AMPControllerInstance.Meta = PatchedMeta
+AMPADSInstance.Meta = PatchedMeta
+AMPMinecraftInstance.Meta = PatchedMeta
+
 def print_time():
     t = time.localtime()
     t_array = [t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec]
