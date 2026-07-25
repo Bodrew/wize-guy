@@ -74,7 +74,7 @@ async def on_ready():
     ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     print("Set ADS tags...")
     print("Await ADS get instances...")
-    await ADS.get_instances(format_data=True, auto_assign_tags=True)
+    await ADS.get_instances(format_data=False)
 
     print("Convert AMPInstances to list...")
     AMPInstances = list(ADS.instances)
