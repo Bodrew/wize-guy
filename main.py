@@ -76,7 +76,7 @@ async def on_ready():
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=False)
 
-    for instance in ADS._instances:
+    for instance in ADS.instances:
         print(instance)
 
     print("Convert AMPInstances to list...")
