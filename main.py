@@ -48,7 +48,7 @@ AMP_URL = os.getenv('AMP_URL')
 AMP_USER = os.getenv('AMP_USER')
 AMP_PW = os.getenv('AMP_PW')
 
-_params = APIParams(AMP_URL, AMP_USER, AMP_PW)
+_params = APIParams(url=AMP_URL, user=AMP_USER, password=AMP_PW)
 
 @client.event
 async def on_ready():
