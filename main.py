@@ -78,6 +78,9 @@ async def on_ready():
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=False)
 
+    for instance in ADS:
+        print(instance)
+
     print("Convert AMPInstances to list...")
     AMPInstances = list(ADS.instances)
     print("Set mcinstance to Union of none...")
