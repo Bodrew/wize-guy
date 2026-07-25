@@ -84,6 +84,7 @@ async def on_ready():
     mcinstance: Union[AMPInstance, AMPMinecraftInstance, None] = None
     print("Iterate through instances to find the Minecraft instance...")
     for instance in AMPInstances:
+        instance.auto_assign_tags = True
         print(f"Is {instance.friendly_name} an instance?")
         if isinstance(instance, (AMPADSInstance, AMPInstance, AMPMinecraftInstance)):
             print("Yes...")
