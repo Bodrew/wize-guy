@@ -72,11 +72,11 @@ async def on_ready():
     print("Get session...")
     session = aiohttp.ClientSession()
     print("Set AMPControllerInstance with existing session...")
-    ADS: AMPControllerInstance = AMPControllerInstance(session=session)
+    ADS = AMPControllerInstance(session=session)
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=False)
 
-    for instance in ADS:
+    for instance in ADS.instances:
         print(instance)
 
     print("Convert AMPInstances to list...")
