@@ -72,9 +72,7 @@ async def on_ready():
     print("Get session...")
     session = aiohttp.ClientSession()
     print("Set AMPControllerInstance with existing session...")
-    ADS = await _bridge.get_ads() 
-    #ADS: AMPControllerInstance = AMPControllerInstance(session=session)
-    print("Set ADS tags...")
+    ADS: AMPControllerInstance = AMPControllerInstance(session=session)
     print("Await ADS get instances...")
     await ADS.get_instances(format_data=False)
 
