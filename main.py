@@ -113,6 +113,14 @@ async def on_message(message):
     if "!whitelist " in message.content:
         user = message.content.split(" ")[1]
         #whitelist(user)
+    
+    if "!tps" in message.content:
+        prompt = "spark tps"
+        consoleChat = client.get_channel(1532383467181051914)
+        await consoleChat.sned(prompt)
+        time.sleep(3)
+        response = consoleChat.history(limit=1)
+        await message.channel.send(response)
 
 @client.event
 async def on_member_join(member):
