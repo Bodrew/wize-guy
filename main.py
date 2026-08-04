@@ -128,9 +128,16 @@ async def on_message(message):
         time.sleep(3)
         async for historyItem in consoleChat.history(limit=1):
             response = historyItem.content
-            for i in response:
-                print(i)
-            await message.channel.send(response.content)
+            lines = response.split("\n")
+
+            newLines = []
+            for line in lines:
+                newLine = line.split(" ] ")[1]
+                newLines.append(newLine)
+            tpsMsg = ""
+            for line in newLines:
+                tpsMsg += line + "\n"
+            await message.channel.send(tpsMsg)
 
 @client.event
 async def on_member_join(member):
