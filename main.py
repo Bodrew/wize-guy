@@ -132,8 +132,12 @@ async def on_message(message):
 
             newLines = []
             for line in lines:
-                newLine = line.split(" ] ")[1]
-                newLines.append(newLine)
+                if " ] " in line:
+                    newLine = line.split(" ] ")[1]
+                    newLines.append(newLine)
+                else:
+                    newLines.append(line)
+            
             tpsMsg = ""
             for line in newLines:
                 tpsMsg += line + "\n"
