@@ -127,7 +127,7 @@ async def on_message(message):
         await consoleChat.send(prompt)
         time.sleep(3)
         async for response in consoleChat.history(limit=1):
-            await message.channel.send(response)
+            await message.channel.send(response.content)
 
 @client.event
 async def on_member_join(member):
