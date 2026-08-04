@@ -124,7 +124,7 @@ async def on_message(message):
     if "!tps" in message.content:
         prompt = "spark tps"
         consoleChat = client.get_channel(1532383467181051914)
-        await consoleChat.sned(prompt)
+        await consoleChat.send(prompt)
         time.sleep(3)
         response = consoleChat.history(limit=1)
         await message.channel.send(response)
