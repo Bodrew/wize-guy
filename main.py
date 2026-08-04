@@ -126,7 +126,10 @@ async def on_message(message):
         consoleChat = client.get_channel(1532383467181051914)
         await consoleChat.send(prompt)
         time.sleep(3)
-        async for response in consoleChat.history(limit=1):
+        async for historyItem in consoleChat.history(limit=1):
+            response = historyItem.content
+            for i in response:
+                print(i)
             await message.channel.send(response.content)
 
 @client.event
