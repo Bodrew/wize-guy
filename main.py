@@ -122,7 +122,7 @@ async def on_message(message):
         #whitelist(user)
     
     if "!bedrock" in message.content:
-        response = "Welcome test!\n\nIf you\'re on Java, please send your username in chat so an admin can whitelist you!\nIf you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!"
+        response = "Welcome test!\n*If you\'re on Java, please send your username in chat so an admin can whitelist you!\n* If you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!
         await message.channel.send(response)
     
     if "!tps" in message.content:
@@ -156,7 +156,7 @@ async def on_member_join(member):
 
     await member.add_roles(newcomerRole)
     await member.add_roles(notWhitelistedRole)
-    response = f'Welcome <@{member.id}>! \n\nIf you\'re on Java, please send your username in chat so an admin can whitelist you!\nIf you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!'
+    response = f'Welcome <@{member.id}>!\n* If you\'re on Java, please send your username in chat so an admin can whitelist you!\n* If you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!'
     await generalChat.send(response)
     print(print_time() + "\n" + f"Join message posted to {member.name}.")
 
