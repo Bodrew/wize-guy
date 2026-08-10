@@ -121,8 +121,8 @@ async def on_message(message):
         user = message.content.split(" ")[1]
         #whitelist(user)
     
-    if "!bedrock" in message.content:
-        response = "Welcome test!\n*If you\'re on Java, please send your username in chat so an admin can whitelist you!\n* If you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!"
+    if "!bedrock" in message.content and message.author.id == 123172448706232321:
+        response = "Welcome test!\n* If you\'re on Java, please send your username in chat so an admin can whitelist you!\n* If you\'re on Bedrock, let us know when you can join as the whitelist needs to be temporarily disabled to allow you to join. \n-# Thankfully, it\'s a one-time fix per player!"
         await message.channel.send(response)
     
     if "!tps" in message.content:
