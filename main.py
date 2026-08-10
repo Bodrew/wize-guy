@@ -121,6 +121,10 @@ async def on_message(message):
         user = message.content.split(" ")[1]
         #whitelist(user)
     
+    if "!bedrock" in message.content:
+        response = "Bedrock players cannot be whitelisted in Java servers directly because their usernames do not exist in the Java \"database\". The workaround is to turn off the whitelist, have the bedrock player join, add them to the whitelist (because now the server knows their name), and then turn the whitelist back on. \n\nIf you're ready, join now so <@123172448706232321> can whitelist you. Otherwise, ping him later when ready!"
+        await message.channel.send(response)
+    
     if "!tps" in message.content:
         prompt = "spark tps"
         consoleChat = client.get_channel(1532383467181051914)
