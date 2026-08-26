@@ -81,6 +81,8 @@ async def on_message(message):
             break
     if message.author == client.user:
         return
+    if message.channel.id == 1532383467181051914:
+        return
 
     if message.content == "!admin":
         response = "Paging <@123172448706232321>!"
