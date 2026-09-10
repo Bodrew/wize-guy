@@ -176,6 +176,8 @@ async def update_status():
     except (TimeoutError, ConnectionRefusedError, OSError):
         emoji = "🔴"
         channel_name = f"{emoji} server offline"
+        await statusChannel.edit(name=channel_name)
+        return
 
     statusChannel = client.get_channel(1456727821815906454)
     if not("🔴" in statusChannel.name):
