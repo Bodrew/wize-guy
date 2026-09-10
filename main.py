@@ -170,17 +170,16 @@ async def update_status():
     server = JavaServer.lookup("wize-craft.com:25572")#"play.wize-craft.com")
     try:
         status = server.status()
-    except:
+        players_online = status.players.online
+        emoji = "🟢" if int(players_online) >= 1 else "🟡"
+        channel_name = f"{emoji} {players_online} online"
+    except (TimeoutError, ConnectionRefusedError, OSError):
         emoji = "🔴"
         channel_name = f"{emoji} server offline"
-    print(status)
-    players_online = status.players.online
-    emoji = "🟢" if int(players_online) >= 1 else "🟡"
-
-    channel_name = f"{emoji} {players_online} online"
 
     statusChannel = client.get_channel(1456727821815906454)
-    displayedPlyrsOnline = statusChannel.name.rsplit(" ")[1]
+    if !"🔴" in statusChannel.name:
+        displayedPlyrsOnline = statusChannel.name.rsplit(" ")[1]
 
     if int(displayedPlyrsOnline) != players_online:
         await statusChannel.edit(name=channel_name)
