@@ -167,7 +167,7 @@ async def on_member_join(member):
 
 @tasks.loop(minutes=2.0)
 async def update_status():
-    server = JavaServer.lookup("wize-craft.com:25572")#"play.wize-craft.com")
+    server = JavaServer.lookup("play.wize-craft.com")
     statusChannel = client.get_channel(1456727821815906454)
     try:
         status = server.status()
