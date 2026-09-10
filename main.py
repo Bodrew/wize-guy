@@ -148,6 +148,9 @@ async def on_message(message):
             for line in newLines:
                 tpsMsg += line + "\n"
             await message.channel.send(tpsMsg)
+    
+    if "!check" in message.content:
+        update_status()
 
 @client.event
 async def on_member_join(member):
@@ -166,6 +169,7 @@ async def on_member_join(member):
 async def update_status():
     server = JavaServer.lookup("play.wize-craft.com")
     status = server.status()
+    print(status)
     players_online = status.players.online
     emoji = "🟢" if int(players_online) >= 1 else "🟡"
 
