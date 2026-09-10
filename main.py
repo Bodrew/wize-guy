@@ -168,7 +168,11 @@ async def on_member_join(member):
 @tasks.loop(minutes=2.0)
 async def update_status():
     server = JavaServer.lookup("wize-craft.com:25572")#"play.wize-craft.com")
-    status = server.status()
+    try:
+        status = server.status()
+    except:
+        emoji = "🔴"
+        channel_name = f"{emoji} server offline"
     print(status)
     players_online = status.players.online
     emoji = "🟢" if int(players_online) >= 1 else "🟡"
