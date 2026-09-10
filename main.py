@@ -174,18 +174,11 @@ async def update_status():
         players_online = status.players.online
         emoji = "🟢" if int(players_online) >= 1 else "🟡"
         channel_name = f"{emoji} {players_online} online"
+        await statusChannel.edit(name=channel_name)
     except (TimeoutError, ConnectionRefusedError, OSError):
         emoji = "🔴"
         channel_name = f"{emoji} server offline"
         await statusChannel.edit(name=channel_name)
         return
-
-    if not("🔴" in statusChannel.name):
-        displayedPlyrsOnline = statusChannel.name.rsplit(" ")[1]
-
-    if int(displayedPlyrsOnline) != players_online:
-        await statusChannel.edit(name=channel_name)
-    else:
-        print(print_time() + "\n" + "The number of players online has not changed. Not updating channel status.")
 
 client.run(TOKEN)
