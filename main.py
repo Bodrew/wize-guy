@@ -150,7 +150,7 @@ async def on_message(message):
             await message.channel.send(tpsMsg)
     
     if "!check" in message.content:
-        update_status()
+        await update_status()
 
 @client.event
 async def on_member_join(member):
@@ -167,7 +167,7 @@ async def on_member_join(member):
 
 @tasks.loop(minutes=2.0)
 async def update_status():
-    server = JavaServer.lookup("play.wize-craft.com")
+    server = JavaServer.lookup("wize-craft.com:25572")#"play.wize-craft.com")
     status = server.status()
     print(status)
     players_online = status.players.online
