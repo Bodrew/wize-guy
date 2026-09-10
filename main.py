@@ -178,7 +178,7 @@ async def update_status():
         channel_name = f"{emoji} server offline"
 
     statusChannel = client.get_channel(1456727821815906454)
-    if !"🔴" in statusChannel.name:
+    if not("🔴" in statusChannel.name):
         displayedPlyrsOnline = statusChannel.name.rsplit(" ")[1]
 
     if int(displayedPlyrsOnline) != players_online:
