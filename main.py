@@ -4,10 +4,10 @@ from discord.ext import tasks
 import random as r
 from dotenv import load_dotenv
 from mcstatus import JavaServer
-from typing import Union
+#from typing import Union
 import time
-import logging
-import aiohttp
+#import logging
+#import aiohttp
 '''from ampapi import (
     ActionResultError,
     AMPADSInstance,
